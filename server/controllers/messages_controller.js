@@ -1,6 +1,6 @@
 
 
-const messages = [];
+let messages = [];
 let id  = 0;
 
 
@@ -17,7 +17,7 @@ module.exports = {
   update: (req, res) => {
     const { text } = req.body;
     const updateID = req.params.id;
-    const messageIndex = messages.findIndex(message => message.id == updateID);
+    const messageIndex = messages.findIndex(message => message.id === updateID);
     let message = messages[messageIndex];
 
     messages[messageIndex] = {
@@ -30,7 +30,7 @@ module.exports = {
   },
   delete: (req, res) => {
     const deleteID = req.params.id;
-    let messageIndex = messages.findIndex(message => message.id == deleteID);
+    let messageIndex = messages.findIndex(message => message.id === deleteID);
     messages.splice(messageIndex, 1);
     res.status(200).send(messages);
   }
